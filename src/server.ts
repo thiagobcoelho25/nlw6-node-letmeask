@@ -1,13 +1,12 @@
-import express, { request, response } from "express";
+import express from "express";
+import "reflect-metadata";
+import { router } from "./routes";
+
+import "./database"
 
 const app = express();
 
-app.get("/teste", (request, response) => {
-    return response.send("Olá NLW");
-})
-
-app.post("/teste", (request, response) => {
-    return response.send("Olá NLW método POST");
-})
+app.use(express.json());
+app.use(router);
 
 app.listen(3000, () => console.log("Server is Running"))
